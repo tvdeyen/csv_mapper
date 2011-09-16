@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe CsvMapper do
+describe CsvMagic do
   include Capybara::DSL
 
   it "should be valid" do
-    CsvMapper.should be_a(Module)
+    CsvMagic.should be_a(Module)
   end
 
   describe "Dummy-Application" do
@@ -13,7 +13,7 @@ describe CsvMapper do
       ::Rails.application.should be_a(Dummy::Application)
     end
 
-    describe "CsvMapper-Integration" do
+    describe "CsvMagic-Integration" do
       it "should add an import-action" do
         PeopleController.new.should respond_to("import")
       end

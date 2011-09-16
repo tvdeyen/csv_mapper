@@ -6,3 +6,5 @@ spec/dummy/db
 .bundle
 Gemfile.lock
 pkg/*
+
+/spec/dummy/log/test.log

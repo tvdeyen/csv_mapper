@@ -1,11 +1,11 @@
 require "rspec"
 require "spec_helper"
-require "csv_mapper/file_handler"
+require "csv_magic/file_handler"
 
-describe CsvMapper::FileHandler do
+describe CsvMagic::FileHandler do
   before(:each) do
     Rails.stub('root').and_return("./spec")
-    @file_handler = CsvMapper::FileHandler.new
+    @file_handler = CsvMagic::FileHandler.new
   end
   before(:all) do
     FileUtils.mkdir('./spec/tmp')

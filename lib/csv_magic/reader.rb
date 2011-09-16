@@ -1,9 +1,9 @@
 require 'fastercsv'
 
-class CsvMapper::Reader
+class CsvMagic::Reader
   
   def initialize(params)
-    @file_handler = CsvMapper::FileHandler.new
+    @file_handler = CsvMagic::FileHandler.new
     @file_handler.load_file(params[:filename])
 
     @file_path = @file_handler.file_path
@@ -18,7 +18,7 @@ class CsvMapper::Reader
   
   def each
     row_number = 1
-    FasterCSV.foreach(@file_path, CsvMapper.options) do |csv_row|
+    FasterCSV.foreach(@file_path, CsvMagic.options) do |csv_row|
       unless row_number == 1 && @ignore_first_row
         row = {}
         @mapping.each do |k, v|

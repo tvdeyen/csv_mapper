@@ -1,11 +1,11 @@
-require "csv_mapper/version"
-require 'csv_mapper/controller_actions'
-require 'csv_mapper/engine'
-require 'csv_mapper/importer'
-require 'csv_mapper/reader'
-require 'csv_mapper/file_handler'
+require "csv_magic/version"
+require 'csv_magic/controller_actions'
+require 'csv_magic/engine'
+require 'csv_magic/importer'
+require 'csv_magic/reader'
+require 'csv_magic/file_handler'
 
-module CsvMapper
+module CsvMagic
 
   class InconsistentStateError < StandardError
   end

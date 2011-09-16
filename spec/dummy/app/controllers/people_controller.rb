@@ -1,8 +1,8 @@
 class PeopleController < ApplicationController
 
-  include CsvMapper::ControllerActions
+  include CsvMagic::ControllerActions
 
-  csv_mapper_config(
+  csv_magic_config(
     :mapping => {
       "Firstname" => :firstname,
       "Lastname"  =>  :lastname

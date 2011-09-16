@@ -1,7 +1,7 @@
 require "rspec"
-require 'csv_mapper/importer'
+require 'csv_magic/importer'
 
-describe CsvMapper::Importer do
+describe CsvMagic::Importer do
 
   describe "raw_data" do
     it "should return an array from the given csv-file"

@@ -1,4 +1,4 @@
-class CsvMapper::FileHandler
+class CsvMagic::FileHandler
 
   attr_reader :path, :filename
 
