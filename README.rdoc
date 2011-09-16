@@ -13,7 +13,7 @@ In principle it will also work with Ruby 1.9, whereas changes has to be made as 
 
 Gemfile:
 
-    gem 'csv_mapper', :git => git://github.com/masche842/csv_mapper.git
+    gem 'csv_magic', :git => git://github.com/magiclabs/csv_magic.git
 
 Set up a new route to point to the import action (get & post will be needed!):
 
@@ -26,12 +26,12 @@ routes.rb
 
 Include it in your Controller:
 
-    require 'csv_mapper'
-    include CsvMapper::ControllerActions
+    require 'csv_magic'
+    include CsvMagic::ControllerActions
 
 Set up the fields to map to:
 
-    csv_mapper_config(
+    csv_magic_config(
       :mapping => {
         "Firstname" => :firstname,
         "Lastname"  =>  :lastname
