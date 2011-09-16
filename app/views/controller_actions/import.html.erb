@@ -1,11 +1,21 @@
 <h1>CSV importieren</h1>
 
-<p>Bitte csv-Datei auswählen</p>
+<%- if !@csv_import_errors.blank? -%>
+<div class="csv_magic_import_errros">
+  <h2>Folgende Fehler sind aufgetreten:</h2>
+  <ol>
+    <%- @csv_import_errors.each do |error| -%>
+    <li><%= error.full_messages %></li>
+    <%- end -%>
+  </ol>
+</div>
+<%- end -%>
 
-<%= form_for :guest, :html  => {:multipart  => true} do |f| %>
+<p>Bitte wählen Sie eine CSV-Datei aus:</p>
+
+<%= form_tag(url_for(:action => 'import'), :multipart => true) do %>
   <div class="field">
     <%= file_field_tag 'file' %>
-    <%= f.submit 'Import' %>
+    <%= submit_tag 'Importieren' %>
   </div>
-
 <% end %>

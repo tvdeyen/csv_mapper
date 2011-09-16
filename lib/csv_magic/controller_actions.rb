@@ -28,11 +28,11 @@ module CsvMagic
         if params[:fields]
           create_resource_items_from_csv(resource_class)
           if @csv_import_errors.empty?
-            flash[:notice] = 'Daten erfolgreich importiert!'
+            flash[:notice] = 'Die Daten wurden erfolgreich importiert.'
             redirect_to :action => :index
           else
-            flash[:warning] = @csv_import_errors
-            redirect_to :back
+            flash[:warning] = "Beim Importieren sind Fehler aufgetreten!"
+            render 'controller_actions/import'
           end
         #no mapping yet
         else

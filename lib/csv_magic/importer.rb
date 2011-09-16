@@ -3,7 +3,6 @@ require 'fastercsv'
 class CsvMagic::Importer
   attr_reader :map_fields, :filename
 
-
   def initialize(params, options)
     @file_handler = CsvMagic::FileHandler.new()
 

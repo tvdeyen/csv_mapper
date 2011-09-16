@@ -5,7 +5,7 @@
 <%= form_tag nil, :id => 'map_fields_form', :method => :post do -%>
   <%= hidden_field_tag :filename, @mapper.filename %>
   <div class="map_fields">
-    <table cellspacing="0">
+    <table>
       <thead>
         <tr>
           <%- header = @raw_data.first -%>
@@ -20,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <%- @raw_data.each do |row| -%>
+        <%- @raw_data[0..5].each do |row| -%>
           <tr>
             <%- row.each do |column| -%>
               <td><%= h(column) -%></td>
@@ -31,8 +31,10 @@
     </table>
   </div>
   <div class="option">
-    <%= check_box_tag 'ignore_first_row', '1', true, :id => 'ignore_first_row_option' %>
-    <label for="ignore_first_row_option">Erste Zeile auslassen (Titelzeile)</label>
+    <p>
+      <%= check_box_tag 'ignore_first_row', '1', true, :id => 'ignore_first_row_option' %>
+      <%= label_tag 'ignore_first_row', 'Erste Zeile auslassen (Titelzeile)' %>
+    </p>
   </div>
   <div class="action">
     <%= submit_tag 'Importieren' %>
