@@ -1,0 +1,8 @@
+<div class="csv_magic_import_errros">
+  <h2>Folgende Fehler sind aufgetreten:</h2>
+  <ol>
+    <%- @csv_import_errors.each do |error| -%>
+    <li><%= error.full_messages %></li>
+    <%- end -%>
+  </ol>
+</div>

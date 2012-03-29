@@ -28,16 +28,16 @@ module CSVMagic
             redirect_to :action => :index
           else
             flash[:warning] = "Beim Importieren sind Fehler aufgetreten!"
-            render 'csv_magic/controller_actions/import'
+            render 'csv_magic/import_errors'
           end
         #no mapping yet
         else
           @mapper = Importer.new(params, self.class.read_inheritable_attribute(:map_fields_options))
           @raw_data = @mapper.raw_data
-          render 'csv_magic/controller_actions/mapper'
+          render 'csv_magic/mapper'
         end
       else
-        render 'csv_magic/controller_actions/import'
+        render 'csv_magic/import'
       end
     rescue InconsistentStateError
       flash[:warning] = 'unbekannter Fehler.'
