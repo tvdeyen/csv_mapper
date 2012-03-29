@@ -1,3 +1,4 @@
+require 'csv'
 require "csv_magic/version"
 require 'csv_magic/controller_actions'
 require 'csv_magic/engine'
@@ -5,7 +6,7 @@ require 'csv_magic/importer'
 require 'csv_magic/reader'
 require 'csv_magic/file_handler'
 
-module CsvMagic
+module CSVMagic
 
   class InconsistentStateError < StandardError
   end

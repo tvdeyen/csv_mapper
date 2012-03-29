@@ -5,15 +5,13 @@ It includes the complete workflow: Csv-Upload, auto-matching and review, importi
 
 == Requirements
 
-Rails 3 & Ruby 1.8.7
-
-In principle it will also work with Ruby 1.9, whereas changes has to be made as FasterCSV is already integrated named as CSV.
+Rails >= 3.1.x and Ruby >= 1.9.x
 
 == Installation
 
 Gemfile:
 
-    gem 'csv_magic', :git => git://github.com/magiclabs/csv_magic.git
+    gem 'csv_magic', :git => 'git://github.com/magiclabs/csv_magic.git'
 
 Set up a new route to point to the import action (get & post will be needed!):
 
@@ -27,7 +25,7 @@ routes.rb
 Include it in your Controller:
 
     require 'csv_magic'
-    include CsvMagic::ControllerActions
+    include CSVMagic::ControllerActions
 
 Set up the fields to map to:
 

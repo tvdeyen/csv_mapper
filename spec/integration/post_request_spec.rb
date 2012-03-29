@@ -1,6 +1,6 @@
 require "rspec"
 
-describe CsvMagic do
+describe CSVMagic do
   context "when csv is given as param" do
     it "renders the mapper view"
   end

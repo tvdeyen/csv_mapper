@@ -1,6 +1,4 @@
-require 'fastercsv'
-
-module CsvMagic
+module CSVMagic
   class Importer
     attr_reader :map_fields, :filename
 
@@ -15,7 +13,7 @@ module CsvMagic
     end
 
     def raw_data
-      FasterCSV.read(@file_handler.file_path, CsvMagic.options)
+      ::CSV.read(@file_handler.file_path, CSVMagic.options)
     end
 
   private

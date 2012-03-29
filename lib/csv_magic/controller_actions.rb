@@ -1,6 +1,4 @@
-require 'fastercsv'
-
-module CsvMagic
+module CSVMagic
   module ControllerActions
     
     def self.included(base)
@@ -48,10 +46,10 @@ module CsvMagic
     rescue MissingFileContentsError
       flash[:warning] = 'Bitte eine CSV-Datei hochladen.'
       render 'controller_actions/import'
-    rescue FasterCSV::MalformedCSVError => e
+    rescue ::CSV::MalformedCSVError => e
       flash[:warning] = 'Fehlerhaft formatierte CSV-Datei: ' + e
       render 'controller_actions/import'
-    rescue Errno::ENOENT
+    rescue ::Errno::ENOENT
       flash[:warning] = 'Datei nicht mehr auf dem Server. Bitte erneut hochladen!'
       render 'controller_actions/import'
     end

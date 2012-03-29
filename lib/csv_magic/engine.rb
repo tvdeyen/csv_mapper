@@ -1,4 +1,4 @@
-module CsvMagic
+module CSVMagic
   class Engine < Rails::Engine
 
   end
