@@ -55,10 +55,10 @@ module CSVMagic
       if params[:fields]
         create_resource_items_from_csv(resource_class)
         if @csv_import_errors.empty?
-          flash[:notice] = t(:successfully_imported_data)
+          flash[:notice] = csv_magic_t(:successfully_imported_data)
           redirect_to :action => :index
         else
-          flash[:warning] = t(:errors_while_importing)
+          flash[:warning] = csv_magic_t(:errors_while_importing)
           render 'csv_magic/import_errors'
         end
       #no mapping yet
@@ -68,13 +68,13 @@ module CSVMagic
         render 'csv_magic/mapper'
       end
     rescue MissingFileContentsError
-      flash[:warning] = t(:please_upload_a_csv_file)
+      flash[:warning] = csv_magic_t(:please_upload_a_csv_file)
       render_csv_import_form
     rescue ::CSV::MalformedCSVError => e
-      flash[:warning] = t(:csv_file_has_wrong_format) % {:error => e.message}
+      flash[:warning] = csv_magic_t(:csv_file_has_wrong_format) % {:error => e.message}
       render_csv_import_form
     rescue ::Errno::ENOENT
-      flash[:warning] = t(:file_not_on_server_any_more)
+      flash[:warning] = csv_magic_t(:file_not_on_server_any_more)
       render_csv_import_form
     rescue Exception => e
       flash[:warning] = e.message

@@ -3,7 +3,7 @@ module CSVMagic
 
 		def self.included(controller)
 			if controller.respond_to?(:helper_method)
-				controller.send(:helper_method, [:t])
+				controller.send(:helper_method, [:csv_magic_t])
 			end
 		end
 
@@ -14,7 +14,7 @@ module CSVMagic
 		# The keys are scoped into +csv_magic+ namespace.
 		# Even if you pass a scope this is scoped under +csv_magic+.
 		# 
-		def t(key, options={})
+		def csv_magic_t(key, options={})
 			scope = options[:scope].blank? ? 'csv_magic' : "csv_magic.#{options.delete(:scope)}"
 			::I18n.t(key, {:scope => scope, :default => key.to_s.humanize}.merge(options))
 		end

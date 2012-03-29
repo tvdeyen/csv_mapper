@@ -1,5 +1,5 @@
 <div class="csv_magic_import_errros">
-  <h2><%= t(:import_errors) %>:</h2>
+  <h2><%= csv_magic_t(:import_errors) %>:</h2>
   <ol>
     <%- @csv_import_errors.each do |error| -%>
     <li><%= error.full_messages %></li>
