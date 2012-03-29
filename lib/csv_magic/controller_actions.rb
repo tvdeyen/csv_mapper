@@ -36,16 +36,16 @@ module CsvMagic
           end
         #no mapping yet
         else
-          @mapper = CsvMagic::Importer.new(params, self.class.read_inheritable_attribute(:map_fields_options))
+          @mapper = Importer.new(params, self.class.read_inheritable_attribute(:map_fields_options))
           @raw_data = @mapper.raw_data
           render 'controller_actions/mapper'
         end
       else
         render 'controller_actions/import'
       end
-    rescue CsvMagic::InconsistentStateError
+    rescue InconsistentStateError
       flash[:warning] = 'unbekannter Fehler.'
-    rescue CsvMagic::MissingFileContentsError
+    rescue MissingFileContentsError
       flash[:warning] = 'Bitte eine CSV-Datei hochladen.'
       render 'controller_actions/import'
     rescue FasterCSV::MalformedCSVError => e
@@ -59,7 +59,7 @@ module CsvMagic
 private
     def create_resource_items_from_csv(resource_class)
       @csv_import_errors = []
-      reader = CsvMagic::Reader.new(params)
+      reader = Reader.new(params)
       reader.each do |row|
         resource = resource_class.new(row)
         unless resource.save
