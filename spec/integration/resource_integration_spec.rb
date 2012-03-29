@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe CSVMagic do
-  include Capybara::DSL
 
   it "should be valid" do
     CSVMagic.should be_a(Module)
