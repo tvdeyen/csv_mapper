@@ -19,8 +19,6 @@ module CSVMagic
     end
 
     def import
-      resource_name = self.class.name.gsub(/Controller/, '').singularize
-      resource_class = resource_name.constantize
       if request.post?
         # already mapped
         if params[:fields]
@@ -30,16 +28,16 @@ module CSVMagic
             redirect_to :action => :index
           else
             flash[:warning] = "Beim Importieren sind Fehler aufgetreten!"
-            render 'controller_actions/import'
+            render 'csv_magic/controller_actions/import'
           end
         #no mapping yet
         else
           @mapper = Importer.new(params, self.class.read_inheritable_attribute(:map_fields_options))
           @raw_data = @mapper.raw_data
-          render 'controller_actions/mapper'
+          render 'csv_magic/controller_actions/mapper'
         end
       else
-        render 'controller_actions/import'
+        render 'csv_magic/controller_actions/import'
       end
     rescue InconsistentStateError
       flash[:warning] = 'unbekannter Fehler.'
@@ -54,7 +52,8 @@ module CSVMagic
       render 'controller_actions/import'
     end
 
-private
+  private
+
     def create_resource_items_from_csv(resource_class)
       @csv_import_errors = []
       reader = Reader.new(params)
@@ -66,6 +65,11 @@ private
       end
       reader.remove_file if @csv_import_errors.empty?
     end
-    
+
+    def resource_class
+      @resource_name ||= self.class.name.gsub(/Controller|Admin/, '').gsub(/:{4}/, '::').singularize
+      @resource_class ||= @resource_name.constantize
+    end
+
   end
 end
