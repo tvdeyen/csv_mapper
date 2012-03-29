@@ -13,6 +13,7 @@ Rails.backtrace_cleaner.remove_silencers!
 
 # Run any available migration
 ActiveRecord::Migrator.migrate File.expand_path("../dummy/db/migrate/", __FILE__)
+ActionController::TestCase.fixture_path = File.join(File.dirname(__FILE__), 'fixtures')
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }

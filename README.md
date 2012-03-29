@@ -1,5 +1,7 @@
 ## Description
 
+[![Build Status](https://secure.travis-ci.org/magiclabs/csv_magic.png?branch=master)](http://travis-ci.org/magiclabs/csv_magic)
+
 This gem adds an import action in every controller you like to be able to handle csv imports.
 It includes the complete workflow:
 
