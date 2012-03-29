@@ -1,9 +1,10 @@
 module CSVMagic
   module ControllerActions
-    
+
     def self.included(base)
       base.extend(ClassMethods)
       base.csv_magic_config
+      base.send(:include, I18nHelpers)
     end
     
     module ClassMethods
@@ -54,10 +55,10 @@ module CSVMagic
       if params[:fields]
         create_resource_items_from_csv(resource_class)
         if @csv_import_errors.empty?
-          flash[:notice] = 'Die Daten wurden erfolgreich importiert.'
+          flash[:notice] = t(:successfully_imported_data)
           redirect_to :action => :index
         else
-          flash[:warning] = "Beim Importieren sind Fehler aufgetreten!"
+          flash[:warning] = t(:errors_while_importing)
           render 'csv_magic/import_errors'
         end
       #no mapping yet
@@ -67,13 +68,13 @@ module CSVMagic
         render 'csv_magic/mapper'
       end
     rescue MissingFileContentsError
-      flash[:warning] = 'Bitte eine CSV-Datei hochladen.'
+      flash[:warning] = t(:please_upload_a_csv_file)
       render_csv_import_form
     rescue ::CSV::MalformedCSVError => e
-      flash[:warning] = "Fehlerhaft formatierte CSV-Datei: #{e.message}"
+      flash[:warning] = t(:csv_file_has_wrong_format) % {:error => e.message}
       render_csv_import_form
     rescue ::Errno::ENOENT
-      flash[:warning] = 'Datei nicht mehr auf dem Server. Bitte erneut hochladen!'
+      flash[:warning] = t(:file_not_on_server_any_more)
       render_csv_import_form
     rescue Exception => e
       flash[:warning] = e.message

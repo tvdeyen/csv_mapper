@@ -1,0 +1,13 @@
+de:
+  csv_magic:
+    csv_file_has_wrong_format: "Fehlerhaft formatierte CSV-Datei: %{error}"
+    errors_while_importing: "Beim Importieren sind Fehler aufgetreten!"
+    file_not_on_server_any_more: 'Datei nicht mehr auf dem Server. Bitte erneut hochladen!'
+    ignore_first_row: 'Erste Zeile auslassen (Titelzeile)'
+    import: 'Importieren'
+    import_csv_file: 'CSV importieren'
+    import_errors: 'Folgende Fehler sind aufgetreten'
+    please_choose_a_csv_file: 'Bitte wählen Sie eine CSV-Datei aus'
+    please_map_columns: 'Bitte Felder zuweisen'
+    please_upload_a_csv_file: 'Bitte eine CSV-Datei hochladen.'
+    successfully_imported_data: 'Die Daten wurden erfolgreich importiert.'

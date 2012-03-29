@@ -1,6 +1,6 @@
-<h1>CSV importieren</h1>
+<h1><%= t(:import_csv_file) %></h1>
 
-<p>Bitte Felder zuweisen</p>
+<p><%= t(:please_map_columns) %></p>
 
 <%= form_tag nil, :id => 'map_fields_form', :method => :post do -%>
   <%= hidden_field_tag :filename, @mapper.filename %>
@@ -32,11 +32,11 @@
   </div>
   <div class="option">
     <p>
-      <%= check_box_tag 'ignore_first_row', '1', true, :id => 'ignore_first_row_option' %>
-      <%= label_tag 'ignore_first_row', 'Erste Zeile auslassen (Titelzeile)' %>
+      <%= check_box_tag 'ignore_first_row', '1', true %>
+      <%= label_tag 'ignore_first_row', t(:ignore_first_row) %>
     </p>
   </div>
   <div class="action">
-    <%= submit_tag 'Importieren' %>
+    <%= submit_tag t(:import) %>
   </div>
 <%- end -%>
