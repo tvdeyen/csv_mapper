@@ -26,7 +26,7 @@ module CSVMagic
     :header_converters => nil,
     :skip_blanks => false,
     :force_quotes => false
-  }.freeze
+  }
 
   def self.options
     @@options
