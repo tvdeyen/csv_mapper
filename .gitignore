@@ -1,12 +1,12 @@
-spec/dummy/tmp
-spec/dummy/log
-spec/dummy/db
+spec/dummy/tmp/*
+spec/dummy/log/*
+spec/dummy/db/*
 .idea
 *.gem
 .bundle
 Gemfile.lock
 pkg/*
-
+!.gitkeep
 /spec/dummy/log/test.log
 .rvmrc
 spec/dummy/db/test.sqlite3
