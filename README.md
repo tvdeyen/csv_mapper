@@ -11,7 +11,7 @@ It includes the complete workflow:
 
 ## Requirements
 
-Rails >= 3.1.x and Ruby >= 1.9.x
+Rails >= 3.2.6 and Ruby >= 1.9.x
 
 ## Installation
 
