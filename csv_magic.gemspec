@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.summary     = %q{Adds some CSV magic into your app.}
   s.description = %q{Provides controller actions, views and field mapping for data from a csv file.}
   s.rubyforge_project = "csv_magic"
+  s.required_ruby_version = '>= 1.9.2'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {spec}/*`.split("\n")
