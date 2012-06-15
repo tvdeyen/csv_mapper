@@ -12,7 +12,7 @@ describe "Controller#import action." do
 	describe "Sending a post request" do
 
 		before(:each) do
-			@file = fixture_file_upload('/files/file.csv', 'text/csv')
+			@file = fixture_file_upload(File.join(File.dirname(__FILE__), '..', 'fixtures/files/file.csv'), 'text/csv')
 		end
 
 		context "if csv is given in params" do
