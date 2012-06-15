@@ -2,12 +2,14 @@ module CSVMagic
   module ControllerActions
 
     def self.included(base)
+      base.send(:class_attribute, :map_fields_options)
       base.extend(ClassMethods)
       base.csv_magic_config
       base.send(:include, I18nHelpers)
     end
-    
+
     module ClassMethods
+
       def csv_magic_config( options = {} )
         defaults = {
           :action => :import,
@@ -15,7 +17,7 @@ module CSVMagic
           :file_field => :file
         }
         options = defaults.merge(options)
-        write_inheritable_attribute(:map_fields_options, options)
+        self.map_fields_options = options
       end
     end
 
@@ -63,7 +65,7 @@ module CSVMagic
         end
       #no mapping yet
       else
-        @mapper = Importer.new(params, self.class.read_inheritable_attribute(:map_fields_options))
+        @mapper = Importer.new(params, self.class.map_fields_options)
         @raw_data = @mapper.raw_data
         render 'csv_magic/mapper'
       end
