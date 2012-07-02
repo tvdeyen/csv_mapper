@@ -1,5 +1,6 @@
 require 'csv'
 require "csv_magic/version"
+require "csv_magic/csv_handler"
 require 'csv_magic/i18n_helpers'
 require 'csv_magic/controller_actions'
 require 'csv_magic/engine'

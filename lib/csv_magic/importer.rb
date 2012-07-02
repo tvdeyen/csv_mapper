@@ -13,7 +13,7 @@ module CSVMagic
     end
 
     def raw_data
-      ::CSV.read(@file_handler.file_path, CSVMagic.options)
+      CSV_HANDLER.read(@file_handler.file_path, CSVMagic.options)
     end
 
   private

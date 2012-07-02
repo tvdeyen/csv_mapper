@@ -72,7 +72,7 @@ module CSVMagic
     rescue MissingFileContentsError
       flash[:warning] = csv_magic_t(:please_upload_a_csv_file)
       render_csv_import_form
-    rescue ::CSV::MalformedCSVError => e
+    rescue CSV_HANDLER::MalformedCSVError => e
       flash[:warning] = csv_magic_t(:csv_file_has_wrong_format) % {:error => e.message}
       render_csv_import_form
     rescue ::Errno::ENOENT

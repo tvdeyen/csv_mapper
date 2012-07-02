@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.summary     = %q{Adds some CSV magic into your app.}
   s.description = %q{Provides controller actions, views and field mapping for data from a csv file.}
   s.rubyforge_project = "csv_magic"
-  s.required_ruby_version = '>= 1.9.2'
+  s.required_ruby_version = '>= 1.8.7'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {spec}/*`.split("\n")
@@ -20,4 +20,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rails', ['~> 3.2.6']
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'sqlite3'
+
+  # using this ruby installer extension for only installing faster csv on ruby 1.8
+  s.extensions = 'ext/mkrf_conf.rb'
 end
