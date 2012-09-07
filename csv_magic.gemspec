@@ -20,7 +20,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rails', ['~> 3.2.6']
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'sqlite3'
-
-  # using this ruby installer extension for only installing faster csv on ruby 1.8
-  s.extensions = 'ext/mkrf_conf.rb'
 end

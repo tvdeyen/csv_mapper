@@ -11,7 +11,9 @@ It includes the complete workflow:
 
 ## Requirements
 
-Rails >= 3.2.6 and Ruby >= 1.9.x
+Rails >= 3.2.6 and Ruby >= 1.8.7*
+
+*) If you want to use CSV magic with Ruby 1.8.7 you have to add `gem 'faster_csv'` to your `Gemfile`
 
 ## Installation
 
@@ -22,6 +24,8 @@ Install as gem:
 Or in your apps `Gemfile`:
 
     gem 'csv_magic', :git => 'git://github.com/magiclabs/csv_magic.git'
+    # Uncomment next line if you want to use csv_magic with Ruby 1.8
+    # gem 'faster_csv', :github => 'glennfu/faster_csv', :platform => :ruby_18
 
 ## Usage
 
