@@ -11,11 +11,12 @@ Gem::Specification.new do |s|
   s.summary     = %q{Adds some CSV magic into your app.}
   s.description = %q{Provides controller actions, views and field mapping for data from a csv file.}
   s.rubyforge_project = "csv_magic"
+  s.required_ruby_version = '>= 1.9.2'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {spec}/*`.split("\n")
   s.require_paths = ["lib"]
-  
+
   s.add_development_dependency 'rails', ['~> 3.1.4']
   s.add_development_dependency 'rspec-rails', ["~> 2.8.0"]
   s.add_development_dependency 'sqlite3', ["~> 1.3.5"]
