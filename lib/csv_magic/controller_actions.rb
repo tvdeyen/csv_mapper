@@ -70,18 +70,18 @@ module CSVMagic
         render 'csv_magic/mapper'
       end
     rescue MissingFileContentsError
-      flash[:warning] = csv_magic_t(:please_upload_a_csv_file)
+      flash[:error] = csv_magic_t(:please_upload_a_csv_file)
       render_csv_import_form
     rescue CSV_HANDLER::MalformedCSVError => e
-      flash[:warning] = csv_magic_t(:csv_file_has_wrong_format) % {:error => e.message}
+      flash[:error] = csv_magic_t(:csv_file_has_wrong_format) % {:error => e.message}
       render_csv_import_form
     rescue ::Errno::ENOENT
-      flash[:warning] = csv_magic_t(:file_not_on_server_any_more)
+      flash[:error] = csv_magic_t(:file_not_on_server_any_more)
       render_csv_import_form
     rescue Exception => e
-      flash[:warning] = e.message
-      logger.error(e.message)
-      logger.error(e.backtrace.join("\n"))
+      flash[:error] = "#{e.message[0..100]}..." # Protection from CookieOverflow errors, if large sql queries fail
+      Rails.logger.error(e.message)
+      Rails.logger.error(e.backtrace.join("\n"))
       render_csv_import_form
     end
 
