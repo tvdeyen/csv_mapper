@@ -10,3 +10,4 @@ pkg/*
 /spec/dummy/log/test.log
 .rvmrc
 spec/dummy/db/test.sqlite3
+rdoc
