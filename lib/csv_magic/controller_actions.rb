@@ -6,6 +6,7 @@ module CSVMagic
       base.extend(ClassMethods)
       base.csv_magic_config
       base.send(:include, I18nHelpers)
+      base.send(:helper_method, :resource_url_proxy)
     end
 
     module ClassMethods
@@ -29,11 +30,16 @@ module CSVMagic
       end
     end
 
-  private
+    private
 
-    def create_resource_items_from_csv(resource_class)
+    # Creates resources from CSV data.
+    #
+    # Overwrite this in your controller, if you need to do something else
+    # (updating existing records, for instance).
+    #
+    def create_resource_items_from_csv
       @csv_import_errors = []
-      reader = Reader.new(params)
+      reader = CSVMagic::Reader.new(params)
       reader.each do |row|
         resource = resource_class.new(row)
         unless resource.save
@@ -43,47 +49,62 @@ module CSVMagic
       reader.remove_file if @csv_import_errors.empty?
     end
 
+    # Tries to guess the resource class name (the model) from our controller name.
+    # Overwrite this in your controller, if this doesn't work correctly.
     def resource_class
       @resource_name ||= self.class.name.gsub(/Controller|Admin/, '').gsub(/:{4}/, '::').singularize
       @resource_class ||= @resource_name.constantize
+    end
+
+    # Overwrite this method in your controller, if you use this inside a gem engine.
+    def resource_url_proxy
+      main_app
     end
 
     def render_csv_import_form
       render 'csv_magic/import'
     end
 
+    # Overwrite this, if you want to redirect to a different url
+    def csv_magic_redirect_url
+      resource_url_proxy.url_for(action: 'index')
+    end
+
     def handle_csv_post_request
-      # already mapped
-      if params[:fields]
-        create_resource_items_from_csv(resource_class)
-        if @csv_import_errors.empty?
-          flash[:notice] = csv_magic_t(:successfully_imported_data)
-          redirect_to :action => :index
-        else
-          flash[:warning] = csv_magic_t(:errors_while_importing)
-          render 'csv_magic/import_errors'
-        end
-      #no mapping yet
+      try_create_from_csv || render_mapper
+    end
+
+    def try_create_from_csv
+      return if params[:fields].blank?
+      create_resource_items_from_csv
+      if @csv_import_errors.empty?
+        flash[:notice] = csv_magic_t(:successfully_imported_data)
+        redirect_to csv_magic_redirect_url
       else
-        @mapper = Importer.new(params, self.class.map_fields_options)
-        @raw_data = @mapper.raw_data
-        render 'csv_magic/mapper'
+        flash[:warning] = csv_magic_t(:errors_while_importing)
+        render 'csv_magic/import_errors'
       end
     rescue MissingFileContentsError
       flash[:error] = csv_magic_t(:please_upload_a_csv_file)
       render_csv_import_form
-    rescue CSV_HANDLER::MalformedCSVError => e
+    rescue CSVMagic::CSV_HANDLER::MalformedCSVError => e
       flash[:error] = csv_magic_t(:csv_file_has_wrong_format) % {:error => e.message}
       render_csv_import_form
     rescue ::Errno::ENOENT
       flash[:error] = csv_magic_t(:file_not_on_server_any_more)
       render_csv_import_form
     rescue Exception => e
-      flash[:error] = "#{e.message[0..100]}..." # Protection from CookieOverflow errors, if large sql queries fail
+      # Protection from CookieOverflow errors, if large sql queries fail
+      flash[:error] = "#{e.message[0..100]}..."
       Rails.logger.error(e.message)
       Rails.logger.error(e.backtrace.join("\n"))
       render_csv_import_form
     end
 
+    def render_mapper
+      @mapper = CSVMagic::Importer.new(params, self.class.map_fields_options)
+      @raw_data = @mapper.raw_data
+      render 'csv_magic/mapper'
+    end
   end
 end

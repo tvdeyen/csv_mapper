@@ -2,7 +2,7 @@
 
 <p><%= csv_magic_t(:please_choose_a_csv_file) %>:</p>
 
-<%= form_tag(url_for(:action => 'import'), :multipart => true) do %>
+<%= form_tag resource_url_proxy.url_for(action: 'import'), multipart: true do %>
   <div class="field">
     <%= file_field_tag 'file' %>
     <%= submit_tag csv_magic_t(:import) %>
