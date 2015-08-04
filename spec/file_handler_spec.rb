@@ -1,4 +1,3 @@
-require "rspec"
 require "spec_helper"
 require "csv_magic/file_handler"
 
