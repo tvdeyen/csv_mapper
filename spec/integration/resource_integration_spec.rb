@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe CSVMagic do
+describe CSVMapper do
   it "should be valid" do
-    expect(CSVMagic).to be_a(Module)
+    expect(CSVMapper).to be_a(Module)
   end
 
   describe "Dummy-Application" do
@@ -11,7 +11,7 @@ describe CSVMagic do
       expect(::Rails.application).to be_a(Dummy::Application)
     end
 
-    describe "CSVMagic-Integration" do
+    describe "CSVMapper-Integration" do
       it "should add an import-action" do
         expect(PeopleController.new).to respond_to("import")
       end

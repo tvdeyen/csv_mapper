@@ -1,17 +1,17 @@
-module CSVMagic
+module CSVMapper
   module ControllerActions
 
     def self.included(base)
       base.send(:class_attribute, :map_fields_options)
       base.extend(ClassMethods)
-      base.csv_magic_config
+      base.csv_mapper_config
       base.send(:include, I18nHelpers)
       base.send(:helper_method, :resource_url_proxy)
     end
 
     module ClassMethods
 
-      def csv_magic_config( options = {} )
+      def csv_mapper_config( options = {} )
         defaults = {
           :action => :import,
           :mapping => {},
@@ -39,7 +39,7 @@ module CSVMagic
     #
     def create_resource_items_from_csv
       @csv_import_errors = []
-      reader = CSVMagic::Reader.new(params)
+      reader = CSVMapper::Reader.new(params)
       reader.each do |row|
         resource = resource_class.new(row)
         unless resource.save
@@ -62,11 +62,11 @@ module CSVMagic
     end
 
     def render_csv_import_form
-      render 'csv_magic/import'
+      render 'csv_mapper/import'
     end
 
     # Overwrite this, if you want to redirect to a different url
-    def csv_magic_redirect_url
+    def csv_mapper_redirect_url
       resource_url_proxy.url_for(action: 'index')
     end
 
@@ -78,20 +78,20 @@ module CSVMagic
       return if params[:fields].blank?
       create_resource_items_from_csv
       if @csv_import_errors.empty?
-        flash[:notice] = csv_magic_t(:successfully_imported_data)
-        redirect_to csv_magic_redirect_url
+        flash[:notice] = csv_mapper_t(:successfully_imported_data)
+        redirect_to csv_mapper_redirect_url
       else
-        flash[:warning] = csv_magic_t(:errors_while_importing)
-        render 'csv_magic/import_errors'
+        flash[:warning] = csv_mapper_t(:errors_while_importing)
+        render 'csv_mapper/import_errors'
       end
     rescue MissingFileContentsError
-      flash[:error] = csv_magic_t(:please_upload_a_csv_file)
+      flash[:error] = csv_mapper_t(:please_upload_a_csv_file)
       render_csv_import_form
-    rescue CSVMagic::CSV_HANDLER::MalformedCSVError => e
-      flash[:error] = csv_magic_t(:csv_file_has_wrong_format) % {:error => e.message}
+    rescue CSVMapper::CSV_HANDLER::MalformedCSVError => e
+      flash[:error] = csv_mapper_t(:csv_file_has_wrong_format) % {:error => e.message}
       render_csv_import_form
     rescue ::Errno::ENOENT
-      flash[:error] = csv_magic_t(:file_not_on_server_any_more)
+      flash[:error] = csv_mapper_t(:file_not_on_server_any_more)
       render_csv_import_form
     rescue Exception => e
       # Protection from CookieOverflow errors, if large sql queries fail
@@ -102,9 +102,9 @@ module CSVMagic
     end
 
     def render_mapper
-      @mapper = CSVMagic::Importer.new(params, self.class.map_fields_options)
+      @mapper = CSVMapper::Importer.new(params, self.class.map_fields_options)
       @raw_data = @mapper.raw_data
-      render 'csv_magic/mapper'
+      render 'csv_mapper/mapper'
     end
   end
 end

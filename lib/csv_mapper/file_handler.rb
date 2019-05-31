@@ -1,4 +1,4 @@
-module CSVMagic
+module CSVMapper
   class FileHandler
 
     attr_reader :path, :filename

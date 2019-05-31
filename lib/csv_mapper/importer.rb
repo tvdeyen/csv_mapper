@@ -1,4 +1,4 @@
-module CSVMagic
+module CSVMapper
   class Importer
     attr_reader :map_fields, :filename
 
@@ -13,7 +13,7 @@ module CSVMagic
     end
 
     def raw_data
-      CSV_HANDLER.read(@file_handler.file_path, CSVMagic.options)
+      CSV_HANDLER.read(@file_handler.file_path, CSVMapper.options)
     end
 
   private

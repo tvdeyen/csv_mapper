@@ -22,7 +22,7 @@ describe "Controller#import action.", type: :request do
 
     context "if mapping is given in params" do
       it "it redirects to index view." do
-        @file_handler = CSVMagic::FileHandler.new
+        @file_handler = CSVMapper::FileHandler.new
         @file_handler.save_temp_file(@file)
         post '/people/import', params: {:filename => @file_handler.filename, :fields => {"1" => "Firstname", "2" => "Lastname"}}
         expect(response.code).to eq "302"
@@ -32,7 +32,7 @@ describe "Controller#import action.", type: :request do
 
     context "if wrong mapping is given in params" do
       it "it shows the import errors view." do
-        @file_handler = CSVMagic::FileHandler.new
+        @file_handler = CSVMapper::FileHandler.new
         @file_handler.save_temp_file(@file)
         post '/people/import', params: {:filename => @file_handler.filename, :fields => {"1" => "Firstname"}}
         expect(response.body).to match(/import errors/i)

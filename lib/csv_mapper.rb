@@ -1,14 +1,14 @@
 require 'csv'
-require "csv_magic/version"
-require "csv_magic/csv_handler"
-require 'csv_magic/i18n_helpers'
-require 'csv_magic/controller_actions'
-require 'csv_magic/engine'
-require 'csv_magic/importer'
-require 'csv_magic/reader'
-require 'csv_magic/file_handler'
+require "csv_mapper/version"
+require "csv_mapper/csv_handler"
+require 'csv_mapper/i18n_helpers'
+require 'csv_mapper/controller_actions'
+require 'csv_mapper/engine'
+require 'csv_mapper/importer'
+require 'csv_mapper/reader'
+require 'csv_mapper/file_handler'
 
-module CSVMagic
+module CSVMapper
 
   class InconsistentStateError < StandardError
   end

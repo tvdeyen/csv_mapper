@@ -1,6 +1,6 @@
 ## Description
 
-[![Build Status](https://secure.travis-ci.org/magiclabs/csv_magic.png?branch=master)](http://travis-ci.org/magiclabs/csv_magic)
+[![Build Status](https://secure.travis-ci.org/magiclabs/csv_mapper.png?branch=master)](http://travis-ci.org/magiclabs/csv_mapper)
 
 This gem adds an import action in every controller you like to be able to handle csv imports.
 It includes the complete workflow:
@@ -19,12 +19,12 @@ Rails >= 3.2.6 and Ruby >= 1.8.7*
 
 Install as gem:
 
-    $ gem install csv_magic
+    $ gem install csv_mapper
 
 Or in your apps `Gemfile`:
 
-    gem 'csv_magic', :git => 'git://github.com/magiclabs/csv_magic.git'
-    # Uncomment next line if you want to use csv_magic with Ruby 1.8
+    gem 'csv_mapper', :git => 'git://github.com/magiclabs/csv_mapper.git'
+    # Uncomment next line if you want to use csv_mapper with Ruby 1.8
     # gem 'faster_csv', :github => 'glennfu/faster_csv', :platform => :ruby_18
 
 ## Usage
@@ -39,12 +39,12 @@ Or in your apps `Gemfile`:
 
 ### Include it in your Controller:
 
-    include CSVMagic::ControllerActions
+    include CSVMapper::ControllerActions
 
 ### Set up the fields to map to:
 
     # your_controller.rb
-    csv_magic_config(
+    csv_mapper_config(
       :mapping => {
         "Firstname" => :firstname,
         "Lastname"  =>  :lastname
@@ -59,7 +59,7 @@ Nearly any part of the gem can be overridden!
 
 ### The views
 
-To override the views place a `csv_magic` folder inside your apps `app/views` folder.
+To override the views place a `csv_mapper` folder inside your apps `app/views` folder.
 
 * `import.html.erb` => The import view, where the form is placed on
 * `mapper.html.erb` => The mapper view, where the mapping happens

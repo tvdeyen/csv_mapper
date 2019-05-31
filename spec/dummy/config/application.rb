@@ -8,7 +8,7 @@ require "action_view/railtie"
 require "sprockets/railtie"
 
 Bundler.require(*Rails.groups)
-require "csv_magic"
+require "csv_mapper"
 
 module Dummy
   class Application < Rails::Application

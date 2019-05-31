@@ -1,6 +1,6 @@
-<h1><%= csv_magic_t(:import_csv_file) %></h1>
+<h1><%= csv_mapper_t(:import_csv_file) %></h1>
 
-<p><%= csv_magic_t(:please_map_columns) %></p>
+<p><%= csv_mapper_t(:please_map_columns) %></p>
 
 <%= form_tag resource_url_proxy.url_for(action: 'import'),
   id: 'map_fields_form', method: :post do -%>
@@ -34,10 +34,10 @@
   <div class="option">
     <p>
       <%= check_box_tag 'ignore_first_row', '1', true %>
-      <%= label_tag 'ignore_first_row', csv_magic_t(:ignore_first_row) %>
+      <%= label_tag 'ignore_first_row', csv_mapper_t(:ignore_first_row) %>
     </p>
   </div>
   <div class="action">
-    <%= submit_tag csv_magic_t(:import) %>
+    <%= submit_tag csv_mapper_t(:import) %>
   </div>
 <%- end -%>

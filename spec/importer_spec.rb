@@ -1,6 +1,6 @@
 require "spec_helper"
 
-module CSVMagic
+module CSVMapper
   describe Importer do
 
     describe "raw_data", :type => :request do
