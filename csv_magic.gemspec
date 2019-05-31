@@ -13,8 +13,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "csv_magic"
   s.required_ruby_version = '>= 2.0'
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {spec}/*`.split("\n")
+  s.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec/}) }
   s.require_paths = ["lib"]
 
   s.add_development_dependency 'rails', ['~> 5.0']
