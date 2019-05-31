@@ -1,6 +1,6 @@
 ## Description
 
-[![Build Status](https://secure.travis-ci.org/magiclabs/csv_mapper.png?branch=master)](http://travis-ci.org/magiclabs/csv_mapper)
+[![Build Status](https://travis-ci.com/tvdeyen/csv_mapper.svg?branch=master)](https://travis-ci.com/tvdeyen/csv_mapper)
 
 This gem adds an import action in every controller you like to be able to handle csv imports.
 It includes the complete workflow:
@@ -11,47 +11,62 @@ It includes the complete workflow:
 
 ## Requirements
 
-Rails >= 3.2.6 and Ruby >= 1.8.7*
-
-*) If you want to use CSV magic with Ruby 1.8.7 you have to add `gem 'faster_csv'` to your `Gemfile`
+Rails >= 3.2 and Ruby >= 2.0*
 
 ## Installation
 
 Install as gem:
 
-    $ gem install csv_mapper
+```bash
+gem install csv_mapper
+```
 
 Or in your apps `Gemfile`:
 
-    gem 'csv_mapper', :git => 'git://github.com/magiclabs/csv_mapper.git'
-    # Uncomment next line if you want to use csv_mapper with Ruby 1.8
-    # gem 'faster_csv', :github => 'glennfu/faster_csv', :platform => :ruby_18
+```rb
+gem 'csv_mapper', github: 'tvdeyen/csv_mapper'
+```
 
 ## Usage
 
 ### Set up a new route to point to the import action (get & post will be needed!):
 
-    # routes.rb
-    resources :myresource do
-      get 'import', :on => :collection
-      post 'import', :on => :collection
-    end
+```rb
+# config/routes.rb
+resources :myresource do
+  collection do
+    get :import
+    post :import
+  end
+end
+```
 
 ### Include it in your Controller:
 
-    include CSVMapper::ControllerActions
+```rb
+# app/controllers/my_resource_controller.b
+class MyResourceController
+  include CSVMapper::ControllerActions
+end
+```
 
 ### Set up the fields to map to:
 
-    # your_controller.rb
-    csv_mapper_config(
-      :mapping => {
-        "Firstname" => :firstname,
-        "Lastname"  =>  :lastname
-      }
-    )
+```rb
+# app/controllers/my_resource_controller.b
+class MyResourceController
+  include CSVMapper::ControllerActions
 
-**See also the implementation in `spec/dummy` app!**
+  csv_mapper_config(
+    mapping: {
+      "Firstname" => :firstname,
+      "Lastname"  =>  :lastname
+    }
+  )
+end
+```
+
+**See also the implementation in [`spec/dummy`](spec/dummy/) app!**
 
 ## Customizing
 
@@ -69,14 +84,14 @@ To override the views place a `csv_mapper` folder inside your apps `app/views` f
 
 To override the actions just define the method you want to override inside your controller.
 
-Just have a look into `lib/controller_actions.rb` file to see the methods.
+Just have a look into [`lib/controller_actions.rb`](lib/csv_mapper/controller_actions.rb) file to see the methods.
 
 ## Thanks
 
-This gem is heavily based on [Andrew Timberlake's map-fields-gem](http://github.com/internuity/map-fields).
+This gem is heavily based on [Andrew Timberlake's map-fields-gem](https://github.com/internuity/map-fields).
 
-Nevertheless we didn't fork it, because the changes are too fundamental.
+Nevertheless we didn't fork it, because the changes were too fundamental.
 
 ## License
 
-MIT License. Copyright 2012 [magic labs*](http://magiclabs.de)
+[MIT License](MIT-LICENSE)
