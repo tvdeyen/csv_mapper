@@ -17,8 +17,7 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {spec}/*`.split("\n")
   s.require_paths = ["lib"]
 
-  s.add_development_dependency 'rails', ['~> 3.2.6']
-  s.add_development_dependency 'test-unit' # needed, because rspec-rails has a bug
-  s.add_development_dependency 'rspec-rails', ['~> 2.99']
+  s.add_development_dependency 'rails', ['~> 5.0']
+  s.add_development_dependency 'rspec-rails', ['~> 3.7']
   s.add_development_dependency 'sqlite3'
 end
