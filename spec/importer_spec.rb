@@ -7,7 +7,11 @@ module CSVMagic
       it "should return an array from the given csv-file" do
         @file = fixture_file_upload(File.join(File.dirname(__FILE__), 'fixtures/files/file.csv'), 'text/csv')
         @importer = Importer.new({:file => @file}, {:file_field => :file})
-        @importer.raw_data.should == [["Lastname", " Given Name"], ["Doe", " John"], ["Mustermann", " Max"]]
+        expect(@importer.raw_data).to match_array [
+          ["Lastname", " Given Name"],
+          ["Doe", " John"],
+          ["Mustermann", " Max"]
+        ]
       end
     end
   end

@@ -14,29 +14,29 @@ describe CSVMagic::FileHandler do
   end
 
   it "should assign the app's tmp-path in @path" do
-    @file_handler.path.should eql "./spec/tmp"
+    expect(@file_handler.path).to eq "./spec/tmp"
   end
 
   describe "save_temp_file" do
     it "should copy a given file to the app's tmp-path" do
       file = File.new('./spec/test.file')
       @file_handler.save_temp_file(file)
-      File.exists?(File.join(@file_handler.path, @file_handler.filename)).should be_true
+      expect(File.exists?(File.join(@file_handler.path, @file_handler.filename))).to be(true)
     end
   end
 
   describe "load_file" do
     it "should assign the given filename in @filename" do
       @file_handler.load_file("myfilename")
-      @file_handler.filename.should eql "myfilename"
+      expect(@file_handler.filename).to eq "myfilename"
     end
     it "should return true if the file exists" do
       file = File.new('./spec/test.file')
       @file_handler.save_temp_file(file)
-      @file_handler.load_file(@file_handler.filename).should be_true
+      expect(@file_handler.load_file(@file_handler.filename)).to be(true)
     end
     it "should return false if the file doesn't exist" do
-      @file_handler.load_file('doesntexist').should be_false
+      expect(@file_handler.load_file('doesntexist')).to be(false)
     end
   end
 
@@ -45,7 +45,7 @@ describe CSVMagic::FileHandler do
       file = File.new('./spec/test.file')
       @file_handler.save_temp_file(file)
       @file_handler.remove_file
-      File.exists?(File.join(@file_handler.path, @file_handler.filename)).should be_false
+      expect(File.exists?(File.join(@file_handler.path, @file_handler.filename))).to be(false)
     end
   end
 end
