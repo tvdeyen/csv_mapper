@@ -3,18 +3,11 @@ require "csv_mapper/file_handler"
 
 describe CSVMapper::FileHandler do
   before(:each) do
-    Rails.stub('root').and_return("./spec")
     @file_handler = CSVMapper::FileHandler.new
-  end
-  before(:all) do
-    FileUtils.mkdir('./spec/tmp')
-  end
-  after(:all) do
-    FileUtils.rm_rf('./spec/tmp')
   end
 
   it "should assign the app's tmp-path in @path" do
-    expect(@file_handler.path).to eq "./spec/tmp"
+    expect(@file_handler.path).to eq Rails.root.join("tmp").to_s
   end
 
   describe "save_temp_file" do
