@@ -5,9 +5,9 @@ require "csv_magic/version"
 Gem::Specification.new do |s|
   s.name        = "csv_magic"
   s.version     = CSVMagic::VERSION
-  s.authors     = ["Marc Schettke", "Thomas von Deyen"]
-  s.email       = ["mail@magiclabs.de"]
-  s.homepage    = "https://github.com/magiclabs/csv_magic"
+  s.authors     = ["Thomas von Deyen"]
+  s.email       = ["thomas@vondeyen.com"]
+  s.homepage    = "https://github.com/tvdeyen/csv_magic"
   s.summary     = %q{Adds some CSV magic into your app.}
   s.description = %q{Provides controller actions, views and field mapping for data from a csv file.}
   s.rubyforge_project = "csv_magic"
