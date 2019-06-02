@@ -22,6 +22,5 @@ module CSVMapper
       @filename = @file_handler.filename
       @map_fields = options[:mapping]
     end
-
   end
 end

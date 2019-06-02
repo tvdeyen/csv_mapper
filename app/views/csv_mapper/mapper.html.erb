@@ -10,12 +10,14 @@
       <thead>
         <tr>
           <%- header = @raw_data.first -%>
-          <%- header.size.times do |column_index| -%>
+          <%- header.each.with_index(1) do |column_header, index| -%>
             <th>
-              <%= select_tag("fields[#{column_index + 1}]", options_for_select(
+              <%= select_tag("fields[#{index}]", options_for_select(
                 @mapper.map_fields,
-                header[column_index].to_s.to_sym
-              ), include_blank: true, class: 'field_options') %>
+                @mapper.map_fields.detect { |k, _v| k == column_header}),
+                prompt: csv_mapper_t(:please_select),
+                class: 'field_options'
+              ) %>
             </th>
           <%- end -%>
         </tr>
