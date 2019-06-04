@@ -103,7 +103,6 @@ module CSVMapper
 
     def render_mapper
       @mapper = CSVMapper::Importer.new(params, self.class.map_fields_options)
-      @raw_data = @mapper.raw_data
       render 'csv_mapper/mapper'
     end
   end
