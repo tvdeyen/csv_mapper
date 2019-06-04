@@ -9,19 +9,23 @@
     <table>
       <thead>
         <tr>
-          <%- header = @raw_data.first -%>
-          <%- header.size.times do |column_index| -%>
+          <%- @mapper.header_row.each.with_index(1) do |column_header, column_index| -%>
             <th>
-              <%= select_tag("fields[#{column_index + 1}]", options_for_select(
-                @mapper.map_fields,
-                header[column_index].to_s.to_sym
-              ), include_blank: true, class: 'field_options') %>
+              <%= select_tag(
+                "fields[#{column_index}]",
+                options_for_select(
+                  @mapper.select_options,
+                  @mapper.mapping.detect { |k, _v| k == column_header}
+                ),
+                prompt: csv_mapper_t(:please_select),
+                class: 'field_options'
+              ) %>
             </th>
           <%- end -%>
         </tr>
       </thead>
       <tbody>
-        <%- @raw_data[0..5].each do |row| -%>
+        <%- @mapper.data.each do |row| -%>
           <tr>
             <%- row.each do |column| -%>
               <td><%= h(column) -%></td>
