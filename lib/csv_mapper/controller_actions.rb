@@ -103,7 +103,11 @@ module CSVMapper
 
     def render_mapper
       @mapper = CSVMapper::Importer.new(params, self.class.map_fields_options)
-      render 'csv_mapper/mapper'
+      if @_lookup_context.exists?("#{controller_path}/mapper")
+        render 'mapper'
+      else
+        render 'csv_mapper/mapper'
+      end
     end
   end
 end
