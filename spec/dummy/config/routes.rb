@@ -1,6 +1,8 @@
-Dummy::Application.routes.draw do
+Rails.application.routes.draw do
   resources :people do
-    get 'import', :on => :collection
-    post 'import', :on => :collection
+    collection do
+      get :import
+      post :import
+    end
   end
 end

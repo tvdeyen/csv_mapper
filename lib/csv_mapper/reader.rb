@@ -1,4 +1,4 @@
-module CSVMagic
+module CSVMapper
   class Reader
 
     def initialize(params)
@@ -17,7 +17,7 @@ module CSVMagic
 
     def each
       row_number = 1
-      CSV_HANDLER.foreach(@file_path, CSVMagic.options) do |csv_row|
+      CSV_HANDLER.foreach(@file_path, CSVMapper.options) do |csv_row|
         unless row_number == 1 && @ignore_first_row
           row = {}
           @mapping.each do |k, v|
