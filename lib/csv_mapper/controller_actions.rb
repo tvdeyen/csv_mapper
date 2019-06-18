@@ -62,7 +62,11 @@ module CSVMapper
     end
 
     def render_csv_import_form
-      render 'csv_mapper/import'
+      if @_lookup_context.exists?("#{controller_path}/import")
+        render 'import'
+      else
+        render 'csv_mapper/import'
+      end
     end
 
     # Overwrite this, if you want to redirect to a different url
