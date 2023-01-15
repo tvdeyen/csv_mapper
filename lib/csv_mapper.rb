@@ -1,6 +1,5 @@
 require "csv"
 require "csv_mapper/version"
-require "csv_mapper/i18n_helpers"
 require "csv_mapper/controller_actions"
 require "csv_mapper/engine"
 require "csv_mapper/importer"

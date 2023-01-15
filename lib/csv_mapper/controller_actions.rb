@@ -4,7 +4,6 @@ module CSVMapper
       base.send(:class_attribute, :map_fields_options)
       base.extend(ClassMethods)
       base.csv_mapper_config
-      base.send(:include, I18nHelpers)
       base.send(:helper_method, :resource_url_proxy)
     end
 
@@ -80,20 +79,20 @@ module CSVMapper
       return if params[:fields].blank?
       create_resource_items_from_csv
       if @csv_import_errors.empty?
-        flash[:notice] = csv_mapper_t(:successfully_imported_data)
+        flash[:notice] = t(:successfully_imported_data, scope: :csv_mapper)
         redirect_to csv_mapper_redirect_url
       else
-        flash[:warning] = csv_mapper_t(:errors_while_importing)
+        flash[:warning] = t(:errors_while_importing, scope: :csv_mapper)
         render "csv_mapper/import_errors"
       end
     rescue MissingFileContentsError
-      flash[:error] = csv_mapper_t(:please_upload_a_csv_file)
+      flash[:error] = t(:please_upload_a_csv_file, scope: :csv_mapper)
       render_csv_import_form
     rescue ::CSV::MalformedCSVError => e
-      flash[:error] = csv_mapper_t(:csv_file_has_wrong_format) % { :error => e.message }
+      flash[:error] = t(:csv_file_has_wrong_format, scope: :csv_mapper, error: e.message)
       render_csv_import_form
     rescue ::Errno::ENOENT
-      flash[:error] = csv_mapper_t(:file_not_on_server_any_more)
+      flash[:error] = t(:file_not_on_server_any_more, scope: :csv_mapper)
       render_csv_import_form
     rescue Exception => e
       # Protection from CookieOverflow errors, if large sql queries fail

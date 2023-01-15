@@ -1,6 +1,6 @@
-<h1><%= csv_mapper_t(:import_csv_file) %></h1>
+<h1><%= t(:import_csv_file, scope: :csv_mapper) %></h1>
 
-<p><%= csv_mapper_t(:please_map_columns) %></p>
+<p><%= t(:please_map_columns, scope: :csv_mapper) %></p>
 
 <%= form_tag resource_url_proxy.url_for(action: 'import'),
   id: 'map_fields_form', method: :post do -%>
@@ -17,7 +17,7 @@
                   @mapper.select_options,
                   @mapper.mapping.detect { |k, _v| k == column_header}
                 ),
-                prompt: csv_mapper_t(:please_select),
+                prompt: t(:please_select, scope: :csv_mapper),
                 class: 'field_options'
               ) %>
             </th>
@@ -38,10 +38,10 @@
   <div class="option">
     <p>
       <%= check_box_tag 'ignore_first_row', '1', true %>
-      <%= label_tag 'ignore_first_row', csv_mapper_t(:ignore_first_row) %>
+      <%= label_tag 'ignore_first_row', t(:ignore_first_row, scope: :csv_mapper) %>
     </p>
   </div>
   <div class="action">
-    <%= submit_tag csv_mapper_t(:import) %>
+    <%= submit_tag t(:import, scope: :csv_mapper) %>
   </div>
 <%- end -%>
