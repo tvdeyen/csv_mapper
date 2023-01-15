@@ -1,6 +1,5 @@
 module CSVMapper
   class Reader
-
     def initialize(params)
       @file_handler = FileHandler.new
       @file_handler.load_file(params[:filename])
@@ -17,7 +16,7 @@ module CSVMapper
 
     def each
       row_number = 1
-      CSV_HANDLER.foreach(@file_path, CSVMapper.options) do |csv_row|
+      ::CSV.foreach(@file_path, CSVMapper.options) do |csv_row|
         unless row_number == 1 && @ignore_first_row
           row = {}
           @mapping.each do |k, v|
@@ -33,6 +32,5 @@ module CSVMapper
     def remove_file
       @file_handler.remove_file
     end
-
   end
 end
