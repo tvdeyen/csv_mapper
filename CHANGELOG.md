@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/tvdeyen/csv_mapper/tree/HEAD)
+## [v1.0.0](https://github.com/tvdeyen/csv_mapper/tree/v1.0.0) (2023-01-15)
 
-[Full Changelog](https://github.com/tvdeyen/csv_mapper/compare/v0.3.3...HEAD)
+[Full Changelog](https://github.com/tvdeyen/csv_mapper/compare/v0.3.3...v1.0.0)
 
 **Merged pull requests:**
 
