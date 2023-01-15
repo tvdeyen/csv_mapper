@@ -1,10 +1,10 @@
-<h1><%= csv_mapper_t(:import_csv_file) %></h1>
+<h1><%= t(:import_csv_file, scope: :csv_mapper) %></h1>
 
-<p><%= csv_mapper_t(:please_choose_a_csv_file) %>:</p>
+<p><%= t(:please_choose_a_csv_file, scope: :csv_mapper) %>:</p>
 
 <%= form_tag resource_url_proxy.url_for(action: 'import'), multipart: true do %>
   <div class="field">
     <%= file_field_tag 'file' %>
-    <%= submit_tag csv_mapper_t(:import) %>
+    <%= submit_tag t(:import, scope: :csv_mapper) %>
   </div>
 <% end %>

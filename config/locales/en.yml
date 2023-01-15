@@ -1,0 +1,13 @@
+en:
+  csv_mapper:
+    csv_file_has_wrong_format: "Malformed CSV file: %{error}"
+    errors_while_importing: "Errors during import!"
+    file_not_on_server_any_more: "File could not be found on server. Please upload again!"
+    ignore_first_row: "Ignore first row (Header)"
+    import: "Import"
+    import_csv_file: "Import CSV"
+    import_errors: "Import errors"
+    please_choose_a_csv_file: "Please choose a CSV file"
+    please_map_columns: "Please map columns"
+    please_upload_a_csv_file: "Please upload a CSV file."
+    successfully_imported_data: "Successfully imported data."

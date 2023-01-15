@@ -11,19 +11,19 @@ RSpec.describe CSVMapper::FileHandler do
   end
 
   describe "#save_temp_file" do
-    let(:file) { File.new('./spec/test.file') }
+    let(:file) { File.new("./spec/test.file") }
 
     subject! do
       file_handler.save_temp_file(file)
     end
 
     it "should copy a given file to the app's tmp-path" do
-      expect(File.exists?(File.join(file_handler.path, file_handler.filename))).to be(true)
+      expect(File.exist?(File.join(file_handler.path, file_handler.filename))).to be(true)
     end
   end
 
   describe "#load_file" do
-    let(:file) { File.new('./spec/test.file') }
+    let(:file) { File.new("./spec/test.file") }
 
     it "should assign the given filename in @filename" do
       file_handler.load_file("myfilename")
@@ -36,12 +36,12 @@ RSpec.describe CSVMapper::FileHandler do
     end
 
     it "should return false if the file doesn't exist" do
-      expect(file_handler.load_file('doesntexist')).to be(false)
+      expect(file_handler.load_file("doesntexist")).to be(false)
     end
   end
 
   describe "#remove_file" do
-    let(:file) { File.new('./spec/test.file') }
+    let(:file) { File.new("./spec/test.file") }
 
     subject! do
       file_handler.save_temp_file(file)
@@ -49,7 +49,7 @@ RSpec.describe CSVMapper::FileHandler do
     end
 
     it "should remove the temporary file" do
-      expect(File.exists?(File.join(file_handler.path, file_handler.filename))).to be(false)
+      expect(File.exist?(File.join(file_handler.path, file_handler.filename))).to be(false)
     end
   end
 end

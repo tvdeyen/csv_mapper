@@ -1,15 +1,12 @@
-require 'csv'
+require "csv"
 require "csv_mapper/version"
-require "csv_mapper/csv_handler"
-require 'csv_mapper/i18n_helpers'
-require 'csv_mapper/controller_actions'
-require 'csv_mapper/engine'
-require 'csv_mapper/importer'
-require 'csv_mapper/reader'
-require 'csv_mapper/file_handler'
+require "csv_mapper/controller_actions"
+require "csv_mapper/engine"
+require "csv_mapper/importer"
+require "csv_mapper/reader"
+require "csv_mapper/file_handler"
 
 module CSVMapper
-
   class InconsistentStateError < StandardError
   end
 
@@ -26,7 +23,7 @@ module CSVMapper
     :return_headers => false,
     :header_converters => nil,
     :skip_blanks => false,
-    :force_quotes => false
+    :force_quotes => false,
   }
 
   def self.options
@@ -36,5 +33,4 @@ module CSVMapper
   def self.options=(options)
     @@options = options
   end
-
 end
