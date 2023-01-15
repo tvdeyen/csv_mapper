@@ -34,7 +34,7 @@ module CSVMapper
     end
 
     def data
-      ::CSV.read(@file_handler.file_path, CSVMapper.options)
+      ::CSV.read(@file_handler.file_path, **CSVMapper.options)
     end
   end
 end

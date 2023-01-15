@@ -16,7 +16,7 @@ module CSVMapper
 
     def each
       row_number = 1
-      ::CSV.foreach(@file_path, CSVMapper.options) do |csv_row|
+      ::CSV.foreach(@file_path, **CSVMapper.options) do |csv_row|
         unless row_number == 1 && @ignore_first_row
           row = {}
           @mapping.each do |k, v|
