@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "csv_mapper"
   s.required_ruby_version = [">= 2.7", "< 3.1"]
 
-  s.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec/}) }
+  s.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec|bin/}) }
   s.require_paths = ["lib"]
 
   s.add_dependency "rails", ["~> 6.0.0"]
