@@ -1,6 +1,6 @@
 ## Description
 
-[![Build Status](https://travis-ci.com/tvdeyen/csv_mapper.svg?branch=master)](https://travis-ci.com/tvdeyen/csv_mapper)
+[![CI](https://github.com/tvdeyen/csv_mapper/actions/workflows/ci.yml/badge.svg)](https://github.com/tvdeyen/csv_mapper/actions/workflows/ci.yml)
 
 This gem adds an import action in every controller you like to be able to handle csv imports.
 It includes the complete workflow:
@@ -11,7 +11,7 @@ It includes the complete workflow:
 
 ## Requirements
 
-Rails >= 3.2 and Ruby >= 2.0*
+Rails >= 6.0 and Ruby >= 2.7
 
 ## Installation
 
