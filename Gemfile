@@ -12,3 +12,5 @@ gem "bootsnap", "~> 1.15"
 gem "listen", "~> 3.8"
 
 gem "pg", "~> 1.4"
+
+gem "github_changelog_generator", "~> 1.16", :group => :tools
