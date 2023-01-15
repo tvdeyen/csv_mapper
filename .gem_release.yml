@@ -1,0 +1,7 @@
+bump:
+  commit: true
+  push: false
+release:
+  tag: true
+  push: true
+  key: github
