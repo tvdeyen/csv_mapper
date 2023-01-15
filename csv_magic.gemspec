@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.summary = %q{Adds some CSV magic into your app.}
   s.description = %q{Provides controller actions, views and field mapping for data from a csv file.}
   s.rubyforge_project = "csv_mapper"
-  s.required_ruby_version = "~> 2.7"
+  s.required_ruby_version = [">= 2.7", "< 3.1"]
 
   s.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec/}) }
   s.require_paths = ["lib"]
