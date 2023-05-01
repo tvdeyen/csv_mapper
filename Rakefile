@@ -15,7 +15,7 @@ require "rspec/core/rake_task"
 
 RSpec::Core::RakeTask.new(:spec)
 
-task :default => :spec
+task default: :spec
 
 RDoc::Task.new do |rdoc|
   rdoc.rdoc_dir = "rdoc"
@@ -26,8 +26,9 @@ RDoc::Task.new do |rdoc|
 end
 
 require "github_changelog_generator/task"
-
+require "csv_mapper/version"
 GitHubChangelogGenerator::RakeTask.new :changelog do |config|
   config.user = "tvdeyen"
   config.project = "csv_mapper"
+  config.future_release = "v#{CSVMapper::VERSION}"
 end

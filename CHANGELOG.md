@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.1.0](https://github.com/tvdeyen/csv_mapper/tree/v1.1.0) (2023-05-01)
+
+[Full Changelog](https://github.com/tvdeyen/csv_mapper/compare/v1.0.0...v1.1.0)
+
+**Merged pull requests:**
+
+- Allow Ruby 3.1 [\#8](https://github.com/tvdeyen/csv_mapper/pull/8) ([tvdeyen](https://github.com/tvdeyen))
+- Update to Rails 6.1 [\#7](https://github.com/tvdeyen/csv_mapper/pull/7) ([tvdeyen](https://github.com/tvdeyen))
+
 ## [v1.0.0](https://github.com/tvdeyen/csv_mapper/tree/v1.0.0) (2023-01-15)
 
 [Full Changelog](https://github.com/tvdeyen/csv_mapper/compare/v0.3.3...v1.0.0)
