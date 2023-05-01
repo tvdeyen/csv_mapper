@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description =
     "Provides controller actions, views and field mapping for data from a csv file."
   s.rubyforge_project = "csv_mapper"
-  s.required_ruby_version = [">= 2.7", "< 3.1"]
+  s.required_ruby_version = [">= 3.0", "< 3.2"]
 
   s.files =
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec|bin/}) }
