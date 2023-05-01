@@ -18,7 +18,9 @@ Gem::Specification.new do |s|
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec|bin/}) }
   s.require_paths = ["lib"]
 
-  s.add_dependency "rails", ["~> 6.1.0"]
+  %w[actionpack activerecord railties].each do |gem|
+    s.add_dependency gem, ["~> 6.1.0"]
+  end
 
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "sqlite3"
