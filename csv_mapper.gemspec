@@ -8,15 +8,17 @@ Gem::Specification.new do |s|
   s.authors = ["Thomas von Deyen"]
   s.email = ["thomas@vondeyen.com"]
   s.homepage = "https://github.com/tvdeyen/csv_mapper"
-  s.summary = %q{Adds some CSV magic into your app.}
-  s.description = %q{Provides controller actions, views and field mapping for data from a csv file.}
+  s.summary = "Adds some CSV magic into your app."
+  s.description =
+    "Provides controller actions, views and field mapping for data from a csv file."
   s.rubyforge_project = "csv_mapper"
   s.required_ruby_version = [">= 2.7", "< 3.1"]
 
-  s.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec|bin/}) }
+  s.files =
+    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec|bin/}) }
   s.require_paths = ["lib"]
 
-  s.add_dependency "rails", ["~> 6.0.0"]
+  s.add_dependency "rails", ["~> 6.1.0"]
 
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "sqlite3"
