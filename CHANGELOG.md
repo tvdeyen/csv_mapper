@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.2.0](https://github.com/tvdeyen/csv_mapper/tree/v1.2.0) (2023-05-01)
+
+[Full Changelog](https://github.com/tvdeyen/csv_mapper/compare/v1.1.0...v1.2.0)
+
+**Merged pull requests:**
+
+- Reduce rails deps [\#9](https://github.com/tvdeyen/csv_mapper/pull/9) ([tvdeyen](https://github.com/tvdeyen))
+
 ## [v1.1.0](https://github.com/tvdeyen/csv_mapper/tree/v1.1.0) (2023-05-01)
 
 [Full Changelog](https://github.com/tvdeyen/csv_mapper/compare/v1.0.0...v1.1.0)
