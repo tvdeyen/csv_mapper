@@ -17,3 +17,5 @@ group :tools do
   gem "github_changelog_generator", "~> 1.16", require: false
   gem "gem-release", "~> 2.2", require: false
 end
+
+gem "sprockets-rails", "~> 3.4"
