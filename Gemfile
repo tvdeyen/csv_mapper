@@ -19,3 +19,7 @@ group :tools do
 end
 
 gem "sprockets-rails", "~> 3.4"
+
+%w[actionpack activerecord railties].each do |rails_gem|
+  gem rails_gem, "~> #{ENV.fetch('RAILS_VERSION', '7.0')}"
+end

@@ -15,6 +15,9 @@ jobs:
         ruby:
           - "3.0"
           - "3.1"
+        rails:
+          - "6.1"
+          - "7.0"
     services:
       postgres:
         image: postgres:11-alpine
@@ -26,6 +29,7 @@ jobs:
           POSTGRES_PASSWORD: password
     env:
       RAILS_ENV: test
+      RAILS_VERSION: ${{ matrix.rails }}
       DATABASE_URL: "postgres://csv_mapper:password@localhost:5432/csv_mapper_test"
     steps:
       - name: Checkout code
