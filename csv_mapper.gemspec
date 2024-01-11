@@ -12,14 +12,14 @@ Gem::Specification.new do |s|
   s.description =
     "Provides controller actions, views and field mapping for data from a csv file."
   s.rubyforge_project = "csv_mapper"
-  s.required_ruby_version = [">= 3.0", "< 3.2"]
+  s.required_ruby_version = [">= 3.0", "< 4.0"]
 
   s.files =
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec|bin/}) }
   s.require_paths = ["lib"]
 
   %w[actionpack activerecord railties].each do |gem|
-    s.add_dependency gem, ["~> 6.1.0"]
+    s.add_dependency gem, [">= 6.1.0", "< 7.1.0"]
   end
 
   s.add_development_dependency "rspec-rails"
