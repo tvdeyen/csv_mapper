@@ -1,5 +1,14 @@
 # Changelog
 
+## [v2.0.0](https://github.com/tvdeyen/csv_mapper/tree/v2.0.0) (2024-01-11)
+
+[Full Changelog](https://github.com/tvdeyen/csv_mapper/compare/v1.2.0...v2.0.0)
+
+**Merged pull requests:**
+
+- Allow Rails 7.1 and drop 6.1 [\#11](https://github.com/tvdeyen/csv_mapper/pull/11) ([tvdeyen](https://github.com/tvdeyen))
+- Rails 7.0 [\#10](https://github.com/tvdeyen/csv_mapper/pull/10) ([tvdeyen](https://github.com/tvdeyen))
+
 ## [v1.2.0](https://github.com/tvdeyen/csv_mapper/tree/v1.2.0) (2023-05-01)
 
 [Full Changelog](https://github.com/tvdeyen/csv_mapper/compare/v1.1.0...v1.2.0)
