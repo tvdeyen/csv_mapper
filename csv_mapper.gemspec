@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   %w[actionpack activerecord railties].each do |gem|
-    s.add_dependency gem, [">= 6.1.0", "< 7.1.0"]
+    s.add_dependency gem, [">= 7.0.0", "< 8"]
   end
 
   s.add_development_dependency "rspec-rails"
