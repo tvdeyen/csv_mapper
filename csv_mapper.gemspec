@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   %w[actionpack activerecord railties].each do |gem|
-    s.add_dependency gem, [">= 7.0.0", "< 8"]
+    s.add_dependency gem, [">= 8.0.0", "< 9"]
   end
   s.add_dependency "csv", "~> 3.3"
 
