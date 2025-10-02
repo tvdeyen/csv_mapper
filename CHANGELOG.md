@@ -1,5 +1,13 @@
 # Changelog
 
+## [v3.0.0](https://github.com/tvdeyen/csv_mapper/tree/v3.0.0) (2025-10-02)
+
+[Full Changelog](https://github.com/tvdeyen/csv_mapper/compare/v2.0.0...v3.0.0)
+
+**Merged pull requests:**
+
+- Update Rails to 8.0 [\#12](https://github.com/tvdeyen/csv_mapper/pull/12) ([tvdeyen](https://github.com/tvdeyen))
+
 ## [v2.0.0](https://github.com/tvdeyen/csv_mapper/tree/v2.0.0) (2024-01-11)
 
 [Full Changelog](https://github.com/tvdeyen/csv_mapper/compare/v1.2.0...v2.0.0)
