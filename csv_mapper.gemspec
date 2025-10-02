@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description =
     "Provides controller actions, views and field mapping for data from a csv file."
   s.license = "MIT"
-  s.required_ruby_version = [">= 3.0", "< 4.0"]
+  s.required_ruby_version = [">= 3.4", "< 4.0"]
 
   s.files =
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec|bin/}) }
@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   %w[actionpack activerecord railties].each do |gem|
     s.add_dependency gem, [">= 7.0.0", "< 8"]
   end
+  s.add_dependency "csv", "~> 3.3"
 
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "sqlite3"
