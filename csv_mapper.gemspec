@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description =
     "Provides controller actions, views and field mapping for data from a csv file."
   s.license = "MIT"
-  s.required_ruby_version = [">= 3.4", "< 4.0"]
+  s.required_ruby_version = [">= 3.4", "< 5"]
 
   s.files =
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec|bin/}) }
